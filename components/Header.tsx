@@ -1,11 +1,10 @@
 import ThemeToggle from "@/components/ThemeToggle"
-import { House, Layers, GalleryVertical, FlaskConical, User, Moon} from "lucide-react"
-import Image from "next/image"
+import { House, Layers, GalleryVertical, FlaskConical, User } from "lucide-react"
 
 export default function Header() {
   return (
     <div className="flex flex-center px-4 py-2 mx-auto mt-4">
-        <header className="flex items-center px-4 py-2 gap-x-20 justify-between w-full rounded-2xl neu-inset">
+        <header className="flex items-center px-4 py-2 gap-x-20 justify-between w-full rounded-2xl">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 100 100"

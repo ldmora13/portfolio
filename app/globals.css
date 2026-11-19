@@ -9,8 +9,6 @@
   --background: #e8e8e8;
   --foreground: #212121;
 
-  --neu-shadow-light: #ffffff;
-  --neu-shadow-dark: #bec3c9;
 }
 
 .dark {
@@ -19,8 +17,6 @@
   --background: #262626;
   --foreground: #f5f5f5;
 
-  --neu-shadow-light: #323232;
-  --neu-shadow-dark: #191919;
 }
 
 @theme inline {
@@ -31,19 +27,6 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@layer utilities {
-  .neu-raised {
-    box-shadow:
-      8px 8px 16px var(--neu-shadow-dark),
-      -8px -8px 16px var(--neu-shadow-light);
-  }
-
-  .neu-inset {
-    box-shadow:
-      inset 5px 5px 10px var(--neu-shadow-dark),
-      inset -5px -5px 10px var(--neu-shadow-light);
-  }
-}
 
 body {
   background-color: var(--background);
