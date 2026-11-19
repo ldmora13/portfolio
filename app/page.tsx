@@ -1,12 +1,17 @@
 
-import MenuButton from "@/components/Menu";
-import TextHero from "@/components/TextHero";
-import TextMorph from "@/components/TextMorph";
+import { TransitionLink } from "@/components/transitions/TransitionLink";
+
+import AboutScroll from "@/components/AboutScroll";
+
 import Particles from "@/components/Particles";
 
+import TextHero from "@/components/TextHero";
+import TextMorph from "@/components/TextMorph";
+
+import MenuButton from "@/components/Menu";
 import FancyButton from "@/components/FancyButton";
 
-import { TransitionLink } from "@/components/transitions/TransitionLink";
+
 
 export default function Home() {
   
@@ -105,9 +110,7 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="min-h-dvh ">
-
-      </section>
+      <AboutScroll />
     </main>
   );
 }
