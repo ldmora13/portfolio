@@ -1,7 +1,9 @@
 "use client";
 
-import { motion } from "motion/react";
 import React from "react";
+import { motion } from "motion/react";
+import { TransitionLink } from "@/components/transitions/TransitionLink";
+
 
 import { cn } from "@/lib/utils";
 
@@ -50,7 +52,7 @@ export default function Navbar({ onNavigate }: { onNavigate?: () => void }) {
           className="relative flex w-full flex-col items-end overflow-visible"
           key={item.href}
         >
-          <a
+          <TransitionLink
             href={item.href}
             onClick={onNavigate}
             className="group flex w-full items-baseline justify-between gap-5 border-b border-current/10 py-3 text-right transition-colors hover:border-current/40 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-current"
@@ -63,7 +65,7 @@ export default function Navbar({ onNavigate }: { onNavigate?: () => void }) {
             <span className="font-mono text-xs opacity-50 transition-opacity group-hover:opacity-100">
               {item.description}
             </span>
-          </a>
+          </TransitionLink>
         </li>
       ))}
     </ul>

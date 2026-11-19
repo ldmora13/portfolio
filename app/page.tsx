@@ -6,6 +6,8 @@ import Particles from "@/components/Particles";
 
 import FancyButton from "@/components/FancyButton";
 
+import { TransitionLink } from "@/components/transitions/TransitionLink";
+
 export default function Home() {
   
   return (
@@ -40,9 +42,11 @@ export default function Home() {
 
       <header className="absolute inset-x-0 top-0 z-20 flex items-center justify-between px-4 pt-6 text-center sm:px-10 sm:pt-8">
         <div className="flex flex-col items-start gap-4 text-left">
-          <FancyButton href="/contact">
-            Contact Me
-          </FancyButton>
+          <TransitionLink href="/contact">
+            <FancyButton>
+              Contact Me
+            </FancyButton>
+          </TransitionLink>
         </div>
         <MenuButton />
       </header>

@@ -1,9 +1,8 @@
 import React from 'react';
 
-export default function FancyButton({ href = "#", children = "Contact Me"}) {
+export default function FancyButton({ children = "Contact Me"}) {
   return (
     <a
-      href={href}
       className="group relative float-right m-0 inline-block cursor-pointer box-border bg-transparent p-[1.25em_2em] text-center no-underline outline-none select-none transition-all duration-300 ease-in-out hover:bg-black hover:text-white text-[13px] font-bold tracking-[0.05em] border-2 border-black"
     >
       {/* Pseudo-elemento ::before animado */}
