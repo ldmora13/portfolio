@@ -1,133 +1,141 @@
 ---
-version: "alpha"
-name: "Neumorphism"
-description: "Neumorphic UI with soft 3D effects. Ideal for modern apps, dashboards, health/fitness, productivity. AI-ready template."
+version: "1.0"
+name: "Mora Portfolio"
+description: "Editorial dark portfolio with an asymmetric navigation panel and motion-led typography."
+stack:
+  framework: "Next.js App Router"
+  styling: "Tailwind CSS v4"
+  motion: "Motion for React"
 colors:
-  primary: "#C8E0F4"
-  secondary: "#F5E0E8"
-  tertiary: "#E8E8E8"
-
+  light:
+    background: "#E8E8E8"
+    foreground: "#212121"
+  dark:
+    background: "#262626"
+    foreground: "#F5F5F5"
 typography:
-  h1:
-    fontFamily: -apple-system, sans-serif
-    fontSize: 2.25rem
-    fontWeight: 700
-  body-md:
-    fontFamily: -apple-system, sans-serif
-    fontSize: 1rem
+  display:
+    fontFamily: "System UI stack"
+    fontWeight: 800
+    case: "uppercase"
+  body:
+    fontFamily: "System UI stack"
     fontWeight: 400
-  label-caps:
-    fontFamily: -apple-system, sans-serif
-    fontSize: 0.75rem
-    fontWeight: 500
+  metadata:
+    fontFamily: "Geist Mono"
+    case: "uppercase"
 rounded:
-  sm: 14px
-  md: 28px
-  lg: 42px
-components:
-  button-primary:
-    backgroundColor: "{colors.primary}"
-    rounded: "{rounded.sm}"
-    padding: 12px
+  base: "0px"
 ---
 
-## Overview
+## Design direction
 
-Neumorphic UI with soft 3D effects. Ideal for modern apps, dashboards, health/fitness, productivity. AI-ready template. It started with a single Dribbble shot. In late 2019, Ukrainian designer Alexander Plyuto posted a soft, pillowy UI concept that looked like buttons extruded from clay. The internet lost its mind. By early 2020, "neumorphism" was everywhere — every design blog, every Twitter thread, every junior designer's portfolio. The name itself (new + skeuomorphism) promised a middle ground between the dead realism of iOS 6 and the sterile flatness that replaced it.
+The portfolio uses a restrained editorial and technical visual language. The interface is monochromatic, spacious, and typography-led. The hero remains the visual focus while the navigation enters as a high-contrast utility surface.
 
-The backlash came fast. Accessibility experts pointed out the obvious: when your entire UI relies on subtle shadow differences against a same-color background, contrast ratios tank. Buttons become invisible to low-vision users. Interactive states blur into decoration. WCAG compliance? Good luck.
+- Design variance: 6/10
+- Motion intensity: 5/10
+- Visual density: 4/10
+- Primary accent: current foreground color
+- Theme: light and dark tokens share the same hierarchy
+- Radius: sharp geometry, no decorative rounded containers
 
-Six years later, neumorphism occupies a weird niche. Nobody ships a full neumorphic interface anymore — that experiment failed. But the technique survived as an accent. A toggle here, a card there, a dashboard widget that needs to feel tactile. It works best in controlled doses, on personal projects or internal tools where you control the audience. The hype died. The aesthetic didn't.
+## Color system
 
-- Density: 5/10 — Balanced
-- Variance: 4/10 — Moderate
-- Motion: 4/10 — Subtle
+The page uses one neutral palette in both themes. Components should consume the semantic Tailwind tokens instead of hard-coding page colors.
 
-- **Style:** Soft, Embossed, Monochromatic, Rounded
-- **Keywords:** Soft UI, embossed, debossed, convex, concave, light source, subtle depth, rounded (12-16px), monochromatic
-- **Era:** 2020s Modern
-- **Light/Dark:** ✓ Full / ◐ Partial
-
-## Colors
-
-- **Soft Blue** (#C8E0F4) — Accent highlight, links and focus states
-- **Soft Pink** (#F5E0E8) — Primary text color
-- **Soft Grey** (#E8E8E8) — Secondary text, borders, muted elements
-
+- `bg-background`: `#E8E8E8` in light mode, `#262626` in dark mode
+- `text-foreground`: `#212121` in light mode, `#F5F5F5` in dark mode
+- Borders: current color with low opacity
+- Backdrop: neutral black at low opacity with a subtle blur
+- Shadows: tinted black, used only to separate the navigation surface
 
 ## Typography
 
-- **Display / Hero:** System UI stack (-apple-system, sans-serif) — Weight 700, tight tracking, used for headline impact
-- **Body:** System UI stack (-apple-system, sans-serif) — Weight 400, 16px/1.6 line-height, max 72ch per line
-- **UI Labels / Captions:** System UI stack (-apple-system, sans-serif) — 0.875rem, weight 500, slight letter-spacing
-- **Monospace:** JetBrains Mono — Used for code, metadata, and technical values
+- Hero mark: large monospace SVG treatment rendered by `TextHero`
+- Display navigation: system UI, uppercase, extra bold, tight tracking
+- Body and controls: system UI with clear weight contrast
+- Navigation indices: Geist Mono, small size, reduced opacity
+- Navigation labels preserve spaces with `white-space: nowrap`
+- Display text must never be clipped by a fixed line-height or per-letter overflow
 
-Scale:
-- Hero: clamp(2.5rem, 5vw, 4rem)
-- H1: 2.25rem
-- H2: 1.5rem
-- Body: 1rem / 1.6
-- Small: 0.875rem
+## Page layout
 
+- The page root uses `min-h-[100dvh]` and `overflow-hidden`.
+- The header is absolutely positioned at the top with the contact action on the left and the menu control on the right.
+- The hero is centered and occupies the available viewport without changing the header position.
+- Footer metadata is anchored to the bottom edge.
+- The menu button remains in the same header position while the navigation is open.
 
-## Layout
+## Navigation
 
-- **Grid:** CSS Grid primary. Max-width containment: 1280px centered with 1.5rem side padding.
-- **Spacing rhythm:** Balanced. Base unit: 0.5rem (8px).
-- **Section vertical gaps:** clamp(4rem, 8vw, 8rem).
-- **Hero layout:** Split-screen (text left, visual right).
-- **Feature sections:** Zig-zag alternating text+image rows. No 3-equal-columns.
-- **Mobile collapse:** All multi-column layouts collapse below 768px. No horizontal overflow.
-- **z-index contract:** base (0) / sticky-nav (100) / overlay (200) / modal (300) / toast (500).
+The navigation is implemented by `components/Menu.tsx` and `components/ui/Navbar.tsx`.
 
+### Closed state
 
-## Elevation & Depth
+- A compact `Menu` control sits at the top-right of the header.
+- The control exposes `aria-expanded`, `aria-controls`, and an accessible label.
+- Hover and focus states reduce opacity without changing layout.
 
-Soft box-shadow (multiple: -5px -5px 15px, 5px 5px 15px), smooth press (150ms), inner subtle shadow
+### Open state
 
-- **Physics:** Ease-out curves, 200-300ms duration. Smooth and predictable.
-- **Entry animations:** Fade + translate-Y (16px → 0) over 420ms ease-out. Staggered cascades for lists: 80ms between items.
-- **Hover states:** Subtle color shift + shadow adjustment over 200ms.
-- **Page transitions:** Fade only (200ms).
-- **Performance:** Only transform and opacity animated. No layout-triggering properties.
+- Desktop: a fixed panel occupies the right side of the viewport, capped at `28rem`.
+- Mobile: the panel uses `inset-0` and `w-full`, occupying the entire screen.
+- The original menu control stays above the panel and changes its label to `Close`.
+- A low-opacity backdrop separates the panel from the hero and closes the menu on click.
+- `Escape` closes the menu.
+- The panel uses `role="dialog"` and `aria-modal="true"`.
+- Navigation links close the panel after selection.
 
+### Navigation list
 
-## Shapes
+- Links are stacked vertically and aligned to the right.
+- Each row has a subtle bottom border and a stable vertical rhythm.
+- The item index is placed opposite the label as technical metadata.
+- Labels animate as a complete line, not as independent characters. This prevents duplicated or clipped words during hover.
+- The list collapses to the same single-column structure at every viewport size.
 
-Base corner radius: 14px. See rounded tokens in front matter for the full scale.
+## Motion
 
+Motion communicates hierarchy and interaction feedback:
 
-## Components
+- Navigation labels roll vertically on hover over 300ms.
+- Backdrop blur and opacity create separation without moving page content.
+- Only `transform` and `opacity` are animated.
+- `Escape` and focus-visible states remain immediate and predictable.
+- Components should respect `prefers-reduced-motion` when additional page motion is introduced.
 
-- **Primary Button:** Rounded (14px) shape. Accent color fill. Hover: 8% darken + subtle lift shadow. Active: -1px translate tactile press. Font weight 600. No outer glows.
-- **Secondary / Ghost Button:** Outline variant. 1.5px border in muted color. Text in primary color. Hover: subtle background fill.
-- **Cards:** Rounded (14px) corners. Surface background. Subtle shadow (0 2px 12px rgba(0,0,0,0.06)). 1px border stroke.
-- **Inputs:** Label above input. 1px border stroke. Focus ring: 2px accent color offset 2px. Error text below in semantic red. No floating labels.
-- **Navigation:** Primary surface background. Active item: accent color indicator. Font weight 500 when active.
-- **Skeletons:** Shimmer animation matching component dimensions. No circular spinners.
-- **Empty States:** Icon-based composition with descriptive text and action button.
+## Responsive behavior
 
+- Breakpoint: `sm` at 640px.
+- Below `sm`, the navigation panel is full viewport width and height.
+- At `sm` and above, the panel is right aligned with a maximum width.
+- Mobile uses `px-6`; desktop uses `sm:px-10`.
+- Navigation labels use `text-3xl` on mobile, `sm:text-4xl`, and `lg:text-5xl`.
+- No horizontal scrolling is allowed in the menu or page shell.
 
-## Do's and Don'ts
+## Accessibility
 
-- No emojis in UI — use icon system only (Lucide, Heroicons)
-- No pure black (#000000) — use off-black or charcoal variants
-- No oversaturated accent colors (saturation cap: 80%)
-- No 3-column equal-width feature layouts — use zig-zag or asymmetric grid
-- No `h-screen` — use `min-h-[100dvh]`
-- No AI copywriting clichés: "Elevate", "Seamless", "Unleash", "Next-Gen"
-- No broken external image links — use picsum.photos or inline SVG
-- No generic lorem ipsum in demos
+- Interactive controls use semantic buttons and links.
+- Every menu state has an accessible label.
+- Focus rings use `focus-visible` and current foreground color.
+- The backdrop is decorative for assistive technology and does not create a duplicate close control.
+- The menu can be closed by button, link selection, backdrop click, or `Escape`.
+- Text contrast must remain readable in both theme tokens.
 
-- Do Rounded corners 12-16px consistent
-- Do Multiple shadow layers (2-3)
-- Do Pastel color verified
-- Do Monochromatic palette checked
-- Do Press animation smooth 150ms
+## Component responsibilities
 
+- `app/page.tsx`: page composition, hero, header, and footer.
+- `components/Menu.tsx`: open state, close behavior, backdrop, responsive navigation surface.
+- `components/ui/Navbar.tsx`: navigation data, links, indices, and text-roll interaction.
+- `app/globals.css`: theme tokens, color scheme, and global typography defaults.
 
-## Use Case
+## Do and do not
 
-Modern apps, Dashboards, Health/Fitness, Productivity
-
-<!-- Source: https://designmd.app/library/neumorphism · designmd.app -->
+- Do preserve the menu button position between closed and open states.
+- Do keep the mobile panel full screen.
+- Do use semantic tokens and stable focus states.
+- Do keep navigation labels readable before adding motion.
+- Do not reintroduce per-character transforms that can overlap or clip labels.
+- Do not add a second accent color or decorative status dots.
+- Do not use `h-screen`; prefer `min-h-[100dvh]`.
+- Do not use broad layout shifts when opening the menu.

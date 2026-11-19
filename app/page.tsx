@@ -1,4 +1,5 @@
 
+import MenuButton from "@/components/Menu";
 import TextHero from "@/components/TextHero";
 import TextMorph from "@/components/TextMorph";
 import Particles from "@/components/Particles";
@@ -6,6 +7,7 @@ import Particles from "@/components/Particles";
 import FancyButton from "@/components/FancyButton";
 
 export default function Home() {
+  
   return (
     <main className="relative min-h-[100dvh] w-full overflow-hidden bg-background text-foreground">
       <div className="absolute inset-0 z-0 pointer-events-none" aria-hidden="true">
@@ -36,13 +38,13 @@ export default function Home() {
         />
       </div>
 
-      <header className="absolute inset-x-0 top-0 z-20 flex items-start justify-between px-4 pt-6 text-center sm:px-10 sm:pt-8">
+      <header className="absolute inset-x-0 top-0 z-20 flex items-center justify-between px-4 pt-6 text-center sm:px-10 sm:pt-8">
         <div className="flex flex-col items-start gap-4 text-left">
-          <FancyButton href="#contact">
+          <FancyButton href="/contact">
             Contact Me
           </FancyButton>
         </div>
-        <p className="pt-1 text-sm font-semibold uppercase sm:text-base">Menu</p>
+        <MenuButton />
       </header>
 
       <section className="relative z-10 flex flex-col min-h-[100dvh] items-center justify-center">
@@ -85,9 +87,9 @@ export default function Home() {
           </div>
       </section>
 
-      <div className="absolute inset-x-0 bottom-0 z-20 flex items-start justify-between px-4 pt-6 pb-5 text-center sm:px-10 sm:pt-8">
-        <p className="text-sm font-semibold leading-tight sm:text-xl">LUIS DAVID MORA</p>
-        <div className="flex items-center gap-2 text-left">
+      <div className="absolute inset-x-0 bottom-0 z-20 flex items-center justify-between px-4 pt-6 pb-5 text-center sm:px-10 sm:pt-8">
+        <p className="text-sm font-semibold leading-tight sm:text-base mt-px">LUIS DAVID MORA</p>
+        <div className="flex items-center gap-x-2 text-left">
           <a href="" className="text-sm font-semibold uppercase sm:text-base">
             LinkedIn
           </a>
