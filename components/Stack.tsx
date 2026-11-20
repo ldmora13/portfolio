@@ -49,7 +49,7 @@ const renderStackLogo = (item: LogoItem, key: Key) => {
     return (
         <span
             key={key}
-            className="flex h-14 w-14 items-center justify-center text-[48px] transition-transform duration-300 ease-out motion-reduce:transition-none group-hover/item:scale-110 group-focus-within/item:scale-110 group-data-[active]/item:scale-110 [&>svg]:h-[0.9em] [&>svg]:w-[0.9em]"
+            className="flex h-14 w-14 items-center justify-center text-[48px] transition-transform duration-300 ease-out motion-reduce:transition-none group-hover/item:scale-110 group-focus-within/item:scale-110 group-data-active/item:scale-110 [&>svg]:h-[0.9em] [&>svg]:w-[0.9em]"
         >
             {item.node}
         </span>
