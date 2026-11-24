@@ -6,9 +6,11 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useGSAP } from '@gsap/react';
 import LogoLoop, { type LogoItem } from '@/components/ui/LogoLoop';
-import TextDynamic from '@/components/ui/text/TextDynamic';
+
+import ResizeHandle from '@/components/ui/text/TextHandle';
+
 import { SiReact, SiNextdotjs, SiAngular, SiAstro, SiTypescript, SiTailwindcss, SiGsap, SiFramer, SiThreedotjs, } from 'react-icons/si';
-import { SiNodedotjs, SiExpress, SiNestjs, SiPython, SiPrisma } from 'react-icons/si';
+import { SiNodedotjs, SiExpress, SiNestjs, SiPython, SiPrisma, SiSupabase } from 'react-icons/si';
 import { SiDocker, SiGithub, SiGit, SiCoolify } from 'react-icons/si';
 import { FaJava, FaAws } from 'react-icons/fa';
 
@@ -33,6 +35,7 @@ const BackendLogos = [
   { node: <SiPython />, title: "Python", href: "https://www.python.org", hoverColor: "#3776ab" },
   { node: <FaJava />, title: "Java", href: "https://www.java.com", hoverColor: "#007396" },
   { node: <SiPrisma />, title: "Prisma", href: "https://www.prisma.io", hoverColor: "#0c344b" },
+  { node: <SiSupabase />, title: "Supabase", href: "https://supabase.com", hoverColor: "#3fcf8e" },
 ]
 
 const DevOpsLogos = [
@@ -98,21 +101,15 @@ export default function Stack() {
     return (
         <section ref={sectionRef} className="min-h-dvh border-t border-foreground/10 py-16 sm:py-24">
             <div className="stack-title mb-12 text-center sm:mb-16">
-                <TextDynamic
-                    mode="decode"
-                    text="TECHNOLOGY"
-                    className="text-4xl font-black tracking-[-0.06em] sm:text-6xl"
-                />
+                <div className="text-4xl font-bold">
+                    The Stack Behind <br /> What I
+                    <ResizeHandle />
+                </div>
             </div>
             <div className="flex flex-col justify-center overflow-hidden items-center">
                 <div className="stack-row flex w-full flex-col items-center border-b border-foreground/10 py-8 sm:py-10">
                     <div className="stack-reveal mb-5 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em]">
-                        <span className="opacity-40">01</span>
-                        <TextDynamic
-                            mode="decode"
-                            text="Frontend"
-                            className="font-bold"
-                        />
+                        <p className="font-bold">Frontend</p>
                     </div>
                     <div className="stack-reveal w-full">
                         <LogoLoop
@@ -134,12 +131,7 @@ export default function Stack() {
                 </div>
                 <div className="stack-row flex w-full flex-col items-center border-b border-foreground/10 py-8 sm:py-10">
                     <div className="stack-reveal mb-5 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em]">
-                        <span className="opacity-40">02</span>
-                        <TextDynamic
-                            mode="decode"
-                            text="Backend"
-                            className="font-bold"
-                        />
+                        <p className="font-bold">Backend</p>
                     </div>
                     <div className="stack-reveal w-full">
                         <LogoLoop
@@ -161,12 +153,7 @@ export default function Stack() {
 
                 <div className="stack-row flex w-full flex-col items-center border-b border-foreground/10 py-8 sm:py-10">
                     <div className="stack-reveal mb-5 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em]">
-                        <span className="opacity-40">03</span>
-                        <TextDynamic
-                            mode="decode"
-                            text="DevOps"
-                            className="font-bold"
-                        />
+                        <p className="font-bold">DevOps</p>
                     </div>
                     <div className="stack-reveal w-full">
                         <LogoLoop logos={DevOpsLogos}
