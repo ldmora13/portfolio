@@ -1,6 +1,8 @@
 import Hero from "@/components/Hero";
 import AboutScroll from "@/components/AboutScroll";
 import Stack from "@/components/Stack";
+import Experience from "@/components/Experience";
+import PersonalProjects from "@/components/PersonalProjects";
 
 
 export default function Home() {
@@ -10,6 +12,8 @@ export default function Home() {
       <Hero />
       <AboutScroll />
       <Stack />
+      <Experience />
+      <PersonalProjects />
     </main>
   );
 }

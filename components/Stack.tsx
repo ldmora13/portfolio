@@ -151,7 +151,7 @@ export default function Stack() {
                     </div>
                 </div>
 
-                <div className="stack-row flex w-full flex-col items-center border-b border-foreground/10 py-8 sm:py-10">
+                <div className="stack-row flex w-full flex-col items-center py-8 sm:py-10">
                     <div className="stack-reveal mb-5 flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em]">
                         <p className="font-bold">DevOps</p>
                     </div>
